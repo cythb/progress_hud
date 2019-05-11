@@ -9,6 +9,7 @@ class ProgressHUD extends StatefulWidget {
   final double borderRadius;
   final String text;
   final bool loading;
+  final double width;
   _ProgressHUDState state;
 
   ProgressHUD(
@@ -18,7 +19,9 @@ class ProgressHUD extends StatefulWidget {
       this.containerColor = Colors.transparent,
       this.borderRadius = 10.0,
       this.text,
-      this.loading = true})
+      this.loading = true,
+      this.width = 100,
+      })
       : super(key: key);
 
   @override
@@ -57,10 +60,11 @@ class _ProgressHUDState extends State<ProgressHUD> {
       return new Scaffold(
           backgroundColor: widget.backgroundColor,
           body: new Stack(
+            fit: StackFit.loose,
             children: <Widget>[
               new Center(
                 child: new Container(
-                  width: 100.0,
+                  width: widget.width,
                   height: 100.0,
                   decoration: new BoxDecoration(
                       color: widget.containerColor,
@@ -105,3 +109,4 @@ class _ProgressHUDState extends State<ProgressHUD> {
         valueColor: new AlwaysStoppedAnimation(widget.color));
   }
 }
+
